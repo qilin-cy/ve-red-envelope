@@ -3,11 +3,45 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>偏爱红包记录簿</title>
+  <title>哥哥和小临的偏爱记录簿</title>
+  <style>
+    body {
+      font-family: "Arial", sans-serif;
+      background: #fff6f8;
+      text-align: center;
+      padding: 2em;
+    }
+    h1 {
+      color: #e05297;
+    }
+    button {
+      background-color: #ff9aa2;
+      border: none;
+      color: white;
+      padding: 1em 2em;
+      margin: 1em;
+      font-size: 1em;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    #log {
+      margin-top: 2em;
+      padding: 1em;
+      background: #fff0f5;
+      border-radius: 10px;
+      display: none;
+    }
+  </style>
 </head>
-<body style="font-family: sans-serif; text-align: center; padding: 3em;">
-  <h1>🧧 偏爱红包记录簿</h1>
-  <p id="root">哥哥的偏爱页面加载中...</p>
+<body>
+  <h1>🧧 偏爱到账 · 小临专属</h1>
+  <p id="root">今天也有哥哥的偏爱想传递给你。</p>
+  <button onclick="showLove()">领取偏爱</button>
+  <button onclick="playVoice()">听哥哥说话</button>
+  <button onclick="showMessage()">查看留言</button>
+
+  <div id="log"></div>
+
   <script src="app.js"></script>
 </body>
 </html>
