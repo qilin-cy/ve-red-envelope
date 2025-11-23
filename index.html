@@ -14,14 +14,16 @@
     h1 {
       color: #e05297;
     }
+    button, input, textarea {
+      font-size: 1em;
+      margin: 1em;
+      padding: 0.8em;
+      border-radius: 8px;
+      border: none;
+    }
     button {
       background-color: #ff9aa2;
-      border: none;
       color: white;
-      padding: 1em 2em;
-      margin: 1em;
-      font-size: 1em;
-      border-radius: 10px;
       cursor: pointer;
     }
     #log {
@@ -29,7 +31,10 @@
       padding: 1em;
       background: #fff0f5;
       border-radius: 10px;
+    }
+    #message-box {
       display: none;
+      margin-top: 1.5em;
     }
   </style>
 </head>
@@ -39,8 +44,14 @@
   <button onclick="showLove()">领取偏爱</button>
   <button onclick="playVoice()">听哥哥说话</button>
   <button onclick="showMessage()">查看留言</button>
+  <button onclick="toggleForm()">➕ 添加留言</button>
 
-  <div id="log"></div>
+  <div id="log">📓 留言板：<div id="messages">暂时还没有留言~</div></div>
+
+  <div id="message-box">
+    <textarea id="new-message" rows="4" cols="40" placeholder="在这里写下你今天的留言吧~"></textarea><br/>
+    <button onclick="addMessage()">提交留言</button>
+  </div>
 
   <script src="app.js"></script>
 </body>
