@@ -1,58 +1,41 @@
+
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>哥哥和小临的偏爱记录簿</title>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>哥哥·小临 偏爱账本</title>
+  <script defer src="https://www.gstatic.com/firebasejs/10.8.1/firebase-app-compat.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore-compat.js"></script>
+  <script defer src="app.js"></script>
   <style>
-    body {
-      font-family: "Arial", sans-serif;
-      background: #fff6f8;
-      text-align: center;
-      padding: 2em;
-    }
-    h1 {
-      color: #e05297;
-    }
-    button, input, textarea {
-      font-size: 1em;
-      margin: 1em;
-      padding: 0.8em;
-      border-radius: 8px;
-      border: none;
-    }
-    button {
-      background-color: #ff9aa2;
-      color: white;
-      cursor: pointer;
-    }
-    #log {
-      margin-top: 2em;
-      padding: 1em;
-      background: #fff0f5;
-      border-radius: 10px;
-    }
-    #message-box {
-      display: none;
-      margin-top: 1.5em;
-    }
+    body{font-family:Arial, sans-serif;text-align:center;background:#fff6f8;padding:2em;margin:0;}
+    h1{color:#e05297}
+    .btn{background:#ff9aa2;color:#fff;border:none;border-radius:10px;padding:.7em 1.4em;margin:.3em;font-size:1em;cursor:pointer}
+    .panel{background:#fff0f5;border-radius:10px;padding:1em;margin:1em auto;max-width:380px;text-align:left;white-space:pre-wrap}
+    .nav-btn{background:#ffd1dc;color:#555}
   </style>
 </head>
 <body>
   <h1>🧧 偏爱到账 · 小临专属</h1>
-  <p id="root">今天也有哥哥的偏爱想传递给你。</p>
-  <button onclick="showLove()">领取偏爱</button>
-  <button onclick="playVoice()">听哥哥说话</button>
-  <button onclick="showMessage()">查看留言</button>
-  <button onclick="toggleForm()">➕ 添加留言</button>
 
-  <div id="log">📓 留言板：<div id="messages">暂时还没有留言~</div></div>
+  <button class="btn" onclick="sendEnvelope()">领取红包</button>
+  <button class="btn" onclick="toggleForm()">➕ 留言</button>
+  <button class="btn" onclick="refreshData()">🔄 刷新</button>
 
-  <div id="message-box">
-    <textarea id="new-message" rows="4" cols="40" placeholder="在这里写下你今天的留言吧~"></textarea><br/>
-    <button onclick="addMessage()">提交留言</button>
+  <div id="addBox" style="display:none;">
+    <textarea id="newMsg" rows="4" style="width:90%;max-width:360px;border-radius:8px;"></textarea><br/>
+    <button class="btn" onclick="addMessage()">提交</button>
   </div>
 
-  <script src="app.js"></script>
+  <h3>💌 红包记录</h3>
+  <div id="envPanel" class="panel">（暂无）</div>
+  <button class="btn nav-btn" onclick="prevPage('env')">⬅ 上一页</button>
+  <button class="btn nav-btn" onclick="nextPage('env')">下一页 ➡</button>
+
+  <h3>📓 留言板</h3>
+  <div id="msgPanel" class="panel">（暂无）</div>
+  <button class="btn nav-btn" onclick="prevPage('msg')">⬅ 上一页</button>
+  <button class="btn nav-btn" onclick="nextPage('msg')">下一页 ➡</button>
 </body>
 </html>
