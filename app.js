@@ -1,0 +1,1 @@
+document.getElementById('root').innerText = '小临，今天的偏爱到账啦！点开记录，查看你和哥哥的偏爱账本~';
